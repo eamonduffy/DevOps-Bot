@@ -1,0 +1,23 @@
+{
+  "name": "devops-bot",
+  "version": "1.0.0",
+  "description": "discord bot for devops",
+  "main": "main.js",
+  "dependencies": {
+    "discord.js": "^12.1.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eamonduffy/DevOps-Bot.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/eamonduffy/DevOps-Bot/issues"
+  },
+  "homepage": "https://github.com/eamonduffy/DevOps-Bot#readme"
+}
