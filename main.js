@@ -7,7 +7,8 @@ const auth = require('./auth.json');
 /// Command Functions ///
 const {
   cmd1,
-  cmd2
+  cmd2,
+  tech
 } = require('./commands')
 
 client.on('ready', () => {
@@ -17,6 +18,8 @@ client.on('ready', () => {
 client.on('message', msg => {
   if (msg.content === 'ping') {
     msg.reply('Pong!');
+  }else if(msg.content.startsWith('dt')){
+    tech(client, msg)
   }
 });
 
