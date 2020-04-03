@@ -2,52 +2,71 @@
 // we will use thes functions in the main.js where the bot will call them
 
 module.exports = {
-  cmd1: () => {
-    return null
-  },
+    cmd1: () => {
+        return null
+    },
 
-  cmd2: () => {
-    return null
-  },
-  tech:(client, message) =>{
-   if(message.content.startsWith('dt')) {
-    const tech = message.content.substr('dt'.length).toLocaleLowerCase()
-     //message.channel.send('Your selected technology: '+tech+', it is of type: '+typeof(tech))
+    cmd2: () => {
+        return null
+    },
+    tech: (client, message) => {
+        //message.channel.send('Made it to tech function')
+        const tech = message.content.substr('dt'.length).toLowerCase().trim()
+        //message.channel.send('Your selected technology: ' + tech + ', it is of type: ' + typeof (tech))
+        //var comparez = 'chatops'
+        //message.channel.send(comparez.localeCompare(tech))
+        //message.channel.send(typeof comparez +" "+comparez)
+        if (tech.localeCompare('continuous integration') == 0) {
+            message.channel.send('DevOps technologies used in contiguous integration are Node.js, GitHub, and Heroku among others.')
+            return
+        }
 
-    if(tech.localeCompare('continuous integration')) {
-      message.channel.send('DevOps technologies used in contiguous integration are Node.js, GitHub, and Heroku among others.')
+        if (tech.localeCompare('continuous testing') == 0) {
+            message.channel.send('DevOps technologies used in continuous testing are QuerySurge, Travis, Selenium, and Gulp among others.')
+            return
+        }
 
-    }else if(tech.localeCompare('continuous testing')){
-      message.channel.send('DevOps technologies used in continuous testing are QuerySurge, Travis, Selenium, and Gulp among others.')
+        if (tech.localeCompare('source control practices') == 0) {
+            message.channel.send('DevOps technologies used in source control practices are GitHub among others.')
+            return
+        }
 
-    }else if(tech.localeCompare('source control practices')){
-      message.channel.send('DevOps technologies used in source control practices are GitHub among others.')
+        if (tech.localeCompare('agile software delivery') == 0) {
+            message.channel.send("DevOps principals used in agile software delivery include scrum, kanban, and SAFe among others")
+            return
+        }
 
-    }else if(tech.localeCompare('agile software delivery')){
+        if (tech.localeCompare('continuous monitoring') == 0) {
+            message.channel.send('DevOps technologies used in continuous monitoring include Winston among others.')
+            return
+        }
 
+        if (tech.localeCompare('continuous exploration') == 0) {
+            message.channel.send('DevOps technologies used in continuous exploration include Trello and Jira among others.')
+            return
+        }
 
-    }else if(tech.localeCompare('continuous monitoring')){
-      message.channel.send('DevOps technologies include Winston among others.')
+        if (tech.localeCompare('chatops') ==0) {
+            message.channel.send('DevOps technologies used in ChatOps include Slack, GitHub, and Heroku among others.')
+            return
+        }
 
-    }else if(tech.localeCompare('continuous exploration')){
-      message.channel.send('DevOps technologies include Trello and Jira among others.')
+        if (tech.localeCompare('package management') == 0) {
+            message.channel.send('DevOps technologies used in package management include npm among others.')
+            return
+        }
 
-    }else if(tech.localeCompare('chatops')){
-      message.channel('DevOps technologies include Slack, GitHub, and Heroku among others.')
+        if (tech.localeCompare('devsecops') == 0) {
+            message.channel.send('DevOps technologies used in DevSecOps include Snyk among others.')
+            return
+        }
 
-    }else if(tech.localeCompare('package management')){
-      message.channel.send('DevOps technologies include npm among others.')
+        message.channel.send('Please enter a valid command and try again :)')
 
-    }else if(tech.localeCompare('devsecops')){
-      message.channel.send('DevOps technologies include Snyk among others.')
-
-    }else{
-      message.channel.send('Please enter a valid command and try again :)')
 
     }
-  }
 
-  }
- }
+}
+
 
 

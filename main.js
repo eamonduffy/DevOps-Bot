@@ -19,6 +19,7 @@ client.on('message', msg => {
   if (msg.content === 'ping') {
     msg.reply('Pong!');
   }else if(msg.content.startsWith('dt')){
+    //msg.reply('Sending you to command.js')
     tech(client, msg)
   }
 });
