@@ -20,7 +20,9 @@ client.on('message', msg => {
     msg.reply('Pong!');
   }else if(msg.content.startsWith('dt')){
     tech(client, msg)
+  }else if(msg.content.startsWith('/')){
+    tech(client, msg)
   }
-});
+ });
 
 client.login(auth.token);
