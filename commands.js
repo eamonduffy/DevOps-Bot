@@ -10,58 +10,53 @@ module.exports = {
         return null
     },
     tech: (client, message) => {
-        //message.channel.send('Made it to tech function')
         const tech = message.content.substr('dt'.length).toLowerCase().trim()
-        //message.channel.send('Your selected technology: ' + tech + ', it is of type: ' + typeof (tech))
-        //var comparez = 'chatops'
-        //message.channel.send(comparez.localeCompare(tech))
-        //message.channel.send(typeof comparez +" "+comparez)
         if (tech.localeCompare('continuous integration') == 0) {
-            message.channel.send('DevOps technologies used in contiguous integration are Node.js, GitHub, and Heroku among others.')
+            message.reply('DevOps technologies used in contiguous integration are Jenkins, Travis, TeamCity, and CircleCI among others.')
             return
         }
 
         if (tech.localeCompare('continuous testing') == 0) {
-            message.channel.send('DevOps technologies used in continuous testing are QuerySurge, Travis, Selenium, and Gulp among others.')
+            message.reply('DevOps technologies used in continuous testing are QuerySurge, Travis, Selenium, and Gulp among others.')
             return
         }
 
         if (tech.localeCompare('source control practices') == 0) {
-            message.channel.send('DevOps technologies used in source control practices are GitHub among others.')
+            message.reply('DevOps technologies used in source control practices are Git, Mercurial, CVS, and SVN among others.')
             return
         }
 
         if (tech.localeCompare('agile software delivery') == 0) {
-            message.channel.send("DevOps principals used in agile software delivery include scrum, kanban, and SAFe among others")
+            message.reply("DevOps technologies used in agile software delivery include ClickUp, GitHub Project Management, and Jira among others.")
             return
         }
 
         if (tech.localeCompare('continuous monitoring') == 0) {
-            message.channel.send('DevOps technologies used in continuous monitoring include Winston among others.')
+            message.reply('DevOps technologies used in continuous monitoring include Winston, Solorwinds, BigPanda, and SysDig among others.')
             return
         }
 
         if (tech.localeCompare('continuous exploration') == 0) {
-            message.channel.send('DevOps technologies used in continuous exploration include Trello and Jira among others.')
+            message.reply('DevOps technologies used in continuous exploration include Metronome, Trello, Aha, and Xtensio among others..')
             return
         }
 
         if (tech.localeCompare('chatops') ==0) {
-            message.channel.send('DevOps technologies used in ChatOps include Slack, GitHub, and Heroku among others.')
+            message.reply('DevOps technologies used in ChatOps include Slack, Mattermost, Chanty, and Microsoft Teams among others.')
             return
         }
 
         if (tech.localeCompare('package management') == 0) {
-            message.channel.send('DevOps technologies used in package management include npm among others.')
+            message.reply('DevOps technologies used in package management include npm, Snapcraft, Yarn, and aptitude among others.')
             return
         }
 
         if (tech.localeCompare('devsecops') == 0) {
-            message.channel.send('DevOps technologies used in DevSecOps include Snyk among others.')
+            message.reply('DevOps technologies used in DevSecOps include Snyk, OWASP Threat Dragon, Fortify, and Red Hat OpenShift among others.')
             return
         }
 
-        message.channel.send('Please enter a valid command and try again :)')
+        message.reply('Please enter a valid command and try again :)')
 
 
     }
