@@ -8,7 +8,9 @@ const auth = require('./auth.json');
 const {
   cmd1,
   cmd2,
-  tech
+  tech,
+  getQuote,
+  getHelp
 } = require('./commands')
 
 client.on('ready', () => {
@@ -20,8 +22,10 @@ client.on('message', msg => {
     msg.reply('Pong!');
   }else if(msg.content.startsWith('dt')){
     tech(client, msg)
-  }else if(msg.content.startsWith('/')){
-    tech(client, msg)
+  }else if(msg.content === '/help'){
+    msg.reply(getHelp())
+  }else if (msg.content === 'quote') {
+    msg.reply(getQuote())
   }
  });
 
