@@ -58,7 +58,6 @@ module.exports = {
 
         message.reply('Please enter a valid command and try again :)')
 
-
     },
 	getQuote: () => {
     const quotes = ["The best TDD can do, is assure that code does what the programmer thinks it should do. That is pretty good BTW",
@@ -77,7 +76,7 @@ module.exports = {
 	  
 	  return '"dt continuous integration" - List of technologies used in continuous integration. \n"dt continuous testing" - List of technologies used in continuous testing. \n"dt source control practices" - List of technologies used in source control. \n"dt continuous monitoring" - List of technologies used in continuous monitoring. \n"dt continuous exploration" - List of technologies used in continuous exploration. \n"dt chatops" - List of technologies used in chatops. \n"dt package management" - List of technologies used in package management. \n"dt devsecops" - List of technologies used in devsecops.\n"quote" - displays informative DevOps quotes ';
   }
-
+    }
 }
 
 
