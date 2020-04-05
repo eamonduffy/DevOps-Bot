@@ -41,7 +41,7 @@ module.exports = {
             return
         }
 
-        if (tech.localeCompare('chatops') ==0) {
+        if (tech.localeCompare('chatops') == 0) {
             message.reply('DevOps technologies used in ChatOps include Slack, Mattermost, Chanty, and Microsoft Teams among others.')
             return
         }
@@ -59,25 +59,21 @@ module.exports = {
         message.reply('Please enter a valid command and try again :)')
 
     },
-	getQuote: () => {
-    const quotes = ["The best TDD can do, is assure that code does what the programmer thinks it should do. That is pretty good BTW",
-                    "Simply put, things always had to be in a production-ready state: if you wrote it, you darn well had to be there to get it running!",
-                  "If you think it’s expensive to hire a professional, wait until you hire an amateur",
-                "Programming is not a zero-sum game. Teaching something to a fellow programmer doesn’t take it away from you",
-              "A phased approach to continuous delivery is not only preferable, it’s infinitely more manageable",
+    getQuote: () => {
+        const quotes = ["The best TDD can do, is assure that code does what the programmer thinks it should do. That is pretty good BTW",
+            "Simply put, things always had to be in a production-ready state: if you wrote it, you darn well had to be there to get it running!",
+            "If you think it’s expensive to hire a professional, wait until you hire an amateur",
+            "Programming is not a zero-sum game. Teaching something to a fellow programmer doesn’t take it away from you",
+            "A phased approach to continuous delivery is not only preferable, it’s infinitely more manageable",
             "The key in such a transition to continuous delivery is to expect things to get worse before you’ll be able to make them better",
-          "Currently, DevOps is more like a philosophical movement, not yet a precise collection of practices, descriptive or prescriptive",
-          "To successfully implement continuous delivery, you need to change the culture of how an entire organization views software development efforts"
+            "Currently, DevOps is more like a philosophical movement, not yet a precise collection of practices, descriptive or prescriptive",
+            "To successfully implement continuous delivery, you need to change the culture of how an entire organization views software development efforts"
         ];
         var item = quotes[Math.floor(Math.random() * quotes.length)];
         return item;
-  },
+    },
     getHelp: () => {
-	  
-	  return '"dt continuous integration" - List of technologies used in continuous integration. \n"dt continuous testing" - List of technologies used in continuous testing. \n"dt source control practices" - List of technologies used in source control. \n"dt continuous monitoring" - List of technologies used in continuous monitoring. \n"dt continuous exploration" - List of technologies used in continuous exploration. \n"dt chatops" - List of technologies used in chatops. \n"dt package management" - List of technologies used in package management. \n"dt devsecops" - List of technologies used in devsecops.\n"quote" - displays informative DevOps quotes ';
-  }
+
+        return '"dt continuous integration" - List of technologies used in continuous integration. \n"dt continuous testing" - List of technologies used in continuous testing. \n"dt source control practices" - List of technologies used in source control. \n"dt continuous monitoring" - List of technologies used in continuous monitoring. \n"dt continuous exploration" - List of technologies used in continuous exploration. \n"dt chatops" - List of technologies used in chatops. \n"dt package management" - List of technologies used in package management. \n"dt devsecops" - List of technologies used in devsecops.\n"quote" - displays informative DevOps quotes ';
     }
 }
-
-
-
