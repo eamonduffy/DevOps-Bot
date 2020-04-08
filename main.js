@@ -13,20 +13,33 @@ const {
   getHelp
 } = require('./commands')
 
+const prefix = 'dev ';
+
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
 });
 
 client.on('message', msg => {
-  if (msg.content === 'ping') {
-    msg.reply('Pong!');
-  }else if(msg.content.startsWith('dt')){
-    tech(client, msg)
-  }else if(msg.content === '/help'){
-    msg.reply(getHelp())
-  }else if (msg.content === 'quote') {
-    msg.reply(getQuote())
+  let args = msg.content.substring(prefix.length).split(' ');
+  let ping = 'ping';
+  let help = 'help';
+  let quote = 'quote';
+  let dt = 'dt';
+
+  switch (args[0]) {
+    case ping:
+      msg.reply('pong');
+      break;
+    case help:
+      msg.reply(getHelp());
+      break;
+    case quote:
+      msg.reply(getQuote());
+      break;
+    case dt:
+      tech(client, msg);
+      break;
   }
- });
+});
 
 client.login(auth.token);
