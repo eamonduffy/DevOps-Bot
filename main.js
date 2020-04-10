@@ -10,7 +10,8 @@ const {
   cmd2,
   tech,
   getQuote,
-  getHelp
+  getHelp,
+  codeTest
 } = require('./commands')
 
 const prefix = 'dev ';
@@ -25,6 +26,8 @@ client.on('message', msg => {
   let help = 'help';
   let quote = 'quote';
   let dt = 'dt';
+  let test= 'test';
+  
 
   switch (args[0]) {
     case ping:
@@ -38,6 +41,9 @@ client.on('message', msg => {
       break;
     case dt:
       tech(client, msg);
+      break;
+    case test:
+      msg.reply(codeTest());
       break;
   }
 });
