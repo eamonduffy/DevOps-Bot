@@ -1,6 +1,9 @@
 node_modules/
 
 auth.json
+credentials.json
+token.json
+calenderID.json
 
 .DS_Store
 .idea
