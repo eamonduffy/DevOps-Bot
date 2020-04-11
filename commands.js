@@ -56,6 +56,11 @@ module.exports = {
             return
         }
 
+        if(tech.localeCompare('infrastructure as code')==0){
+            message.reply('DevOps technologies used in infrastructure as code include Terraform, Saltstack, Docker, and (R)?ex among others.')
+            return;
+        }
+
         message.reply('Please enter a valid command and try again :)')
 
     },
