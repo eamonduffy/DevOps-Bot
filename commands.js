@@ -77,6 +77,19 @@ module.exports = {
         var item = quotes[Math.floor(Math.random() * quotes.length)];
         return item;
     },
+    getJoke: () => {
+        const jokes = ["Two robots meet. The first robot asks, 'Are you ill?' The second robot replies, 'No, just feeling a bit off.'",
+            "ASCII a stupid question, get a stupid ANSI",
+            "My grandpa never got to experience the Internet. Not because he was too old, but because he used Internet Explorer.",
+            "There are eight hobbits in a hobbyte",
+            "Why do Java developers wear glasses? ... Because they don't C#",
+            "How do you generate a random string? ... Put a web designer in front of VIM and tell him to save and exit.",
+            "An SEO expert walks into a bar, bars, pub, inn, tavern, public house, Irish pub, drink, drinks, beer, alcohol..",
+            "Computers are like air conditioners. They work fine until you start opening windows."
+        ];
+        var joke = jokes[Math.floor(Math.random() * jokes.length)];
+        return joke;
+    },
     getHelp: () => {
 
         return '"dt continuous integration" - List of technologies used in continuous integration. \n"dt continuous testing" - List of technologies used in continuous testing. \n"dt source control practices" - List of technologies used in source control. \n"dt continuous monitoring" - List of technologies used in continuous monitoring. \n"dt continuous exploration" - List of technologies used in continuous exploration. \n"dt chatops" - List of technologies used in chatops. \n"dt package management" - List of technologies used in package management. \n"dt devsecops" - List of technologies used in devsecops.\n"dev quote" - displays informative DevOps quotes ';

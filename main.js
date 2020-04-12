@@ -11,6 +11,7 @@ const {
   tech,
   gc,
   getQuote,
+  getJoke,
   getHelp
 } = require('./commands')
 
@@ -27,6 +28,7 @@ client.on('message', msg => {
   let quote = 'quote';
   let dt = 'dt';
   let cal = 'cal';
+  let joke = 'joke';
 
   switch (args[0]) {
     case ping:
@@ -43,6 +45,9 @@ client.on('message', msg => {
       break;
     case cal:
       gc(client, msg);
+      break;
+    case joke:
+      msg.reply(getJoke());
       break;
   }
 });
