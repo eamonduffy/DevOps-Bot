@@ -10,7 +10,7 @@ module.exports = {
         return null
     },
     tech: (client, message) => {
-        const tech = message.content.substr('dt'.length).toLowerCase().trim()
+        const tech = message.content.substr('dev-dt'.length).toLowerCase().trim()
         if (tech.localeCompare('continuous integration') == 0) {
             message.reply('DevOps technologies used in contiguous integration are Jenkins, Travis, TeamCity, and CircleCI among others.')
             return
