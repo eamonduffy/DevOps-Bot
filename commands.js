@@ -56,7 +56,7 @@ module.exports = {
             return
         }
 
-        if(tech.localeCompare('infrastructure as code')==0){
+        if (tech.localeCompare('infrastructure as code') == 0) {
             message.reply('DevOps technologies used in infrastructure as code include Terraform, Saltstack, Docker, and (R)?ex among others.')
             return;
         }
@@ -99,8 +99,10 @@ module.exports = {
         const cal = message.content.substr('dev-cal'.length).toLowerCase().trim()
         const fs = require('fs');
         const readline = require('readline');
-        const {google} = require('googleapis');
-        const calID= require('./calenderID');
+        const {
+            google
+        } = require('googleapis');
+        const calID = require('./calenderID');
 
         // If modifying these scopes, delete token.json.
         const SCOPES = ['https://www.googleapis.com/auth/calendar'];
@@ -113,21 +115,21 @@ module.exports = {
         fs.readFile('credentials.json', (err, content) => {
             if (err) return console.log('Error loading client secret file:', err);
             // Authorize a client with credentials, then call the Google Calendar API.
-            if(cal.localeCompare('list')==0){
+            if (cal.localeCompare('list') == 0) {
                 authorize(JSON.parse(content), listEvents);
                 return;
             }
 
-            if(cal.localeCompare('create')==0) {
+            if (cal.localeCompare('create') == 0) {
                 authorize(JSON.parse(content), createEvents);
                 return;
             }
 
-            if(cal.localeCompare('delete')==0){
+            if (cal.localeCompare('delete') == 0) {
                 deleteEvents();
                 return;
             }
-                message.reply('Please enter a valid calender command :)')
+            message.reply('Please enter a valid calender command :)')
 
         });
 
@@ -138,7 +140,11 @@ module.exports = {
          * @param {function} callback The callback to call with the authorized client.
          */
         function authorize(credentials, callback) {
-            const {client_secret, client_id, redirect_uris} = credentials.installed;
+            const {
+                client_secret,
+                client_id,
+                redirect_uris
+            } = credentials.installed;
             const oAuth2Client = new google.auth.OAuth2(
                 client_id, client_secret, redirect_uris[0]);
 
@@ -186,7 +192,10 @@ module.exports = {
          * @param {google.auth.OAuth2} auth An authorized OAuth2 client.
          */
         function listEvents(auth) {
-            const calendar = google.calendar({version: 'v3', auth});
+            const calendar = google.calendar({
+                version: 'v3',
+                auth
+            });
             calendar.events.list({
                 calendarId: calID.ID,
                 timeMin: (new Date()).toISOString(),
@@ -232,7 +241,10 @@ module.exports = {
         // Change the scope to 'https://www.googleapis.com/auth/calendar' and delete any
         // stored credentials.
         function createEvents(auth) {
-            const calendar = google.calendar({version: 'v3', auth});
+            const calendar = google.calendar({
+                version: 'v3',
+                auth
+            });
             //const summary = cal.content.substr('dev-cal'.length).toLowerCase().trim()
             //const location = message.content.substr('dev-cal'.length).toLowerCase().trim()
 
@@ -269,7 +281,7 @@ module.exports = {
                 auth: auth,
                 calendarId: calID.ID,
                 resource: event,
-            }, function(err, event) {
+            }, function (err, event) {
                 if (err) {
                     message.reply('There was an error contacting the Calendar service: ' + err)
                     //console.log('There was an error contacting the Calendar service: ' + err);
@@ -280,7 +292,12 @@ module.exports = {
                 //console.log('Event created: %s', event.htmlLink);
             });
         }
+    },
 
-
-    }
+    // dispAuth: () => {
+    //     const embed = new MessageEmbed()
+    //         .setTitle('DevOps Bot Creators')
+    //         .setDescription('Author 1');
+    //     message.channel.send(embed);
+    // }
 }
