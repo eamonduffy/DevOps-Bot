@@ -76,7 +76,29 @@ module.exports = {
 
         return '"dt continuous integration" - List of technologies used in continuous integration. \n"dt continuous testing" - List of technologies used in continuous testing. \n"dt source control practices" - List of technologies used in source control. \n"dt continuous monitoring" - List of technologies used in continuous monitoring. \n"dt continuous exploration" - List of technologies used in continuous exploration. \n"dt chatops" - List of technologies used in chatops. \n"dt package management" - List of technologies used in package management. \n"dt devsecops" - List of technologies used in devsecops.\n"dev quote" - displays informative DevOps quotes ';
     },
-    codeTest: () => {
-        return "Some testing frameworks for JavaScript are Mocha, Jasmine, Karma, Puppeteer, and Chai. More detailed command coming soon:)"
+    codeTest: (client,message) => {
+        const codeTest = message.content.substr('dev-test'.length).toLowerCase().trim()
+        if (codeTest.localeCompare('mocha')==0){
+            message.reply('Insert mocha text here')
+            return
+        }
+        if (codeTest.localeCompare('jasmine')==0){
+            message.reply('insert jasmine text here')
+            return
+        }
+        if (codeTest.localeCompare('karma')==0){
+            message.reply('insert karma text here')
+            return
+        }
+        if (codeTest.localeCompare('puppeteer')==0){
+            message.reply('insert puppeteer text here')
+            return
+        }
+        if(codeTest.localeCompare('chai')==0){
+            message.reply('insert chai text here')
+            return
+        }
+        
+        message.reply('Some testing frameworks for JavaScript are Mocha, Jasmine, Karma, Puppeteer, and Chai. Type "dev test (test framework)" to learn more about a specific framework listed above.')
     }
 }

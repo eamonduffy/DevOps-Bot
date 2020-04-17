@@ -43,7 +43,7 @@ client.on('message', msg => {
       tech(client, msg);
       break;
     case test:
-      msg.reply(codeTest());
+      codeTest(client,msg);
       break;
   }
 });
