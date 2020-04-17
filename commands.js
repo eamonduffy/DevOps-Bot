@@ -126,7 +126,7 @@ module.exports = {
             }
 
             if (cal.localeCompare('delete') == 0) {
-                deleteEvents();
+                authorize(JSON.parse(content), deleteEvents);
                 return;
             }
             message.reply('Please enter a valid calender command :)')
@@ -196,6 +196,7 @@ module.exports = {
                 version: 'v3',
                 auth
             });
+            //calendar.events.list(calID.ID).items[0].id
             calendar.events.list({
                 calendarId: calID.ID,
                 timeMin: (new Date()).toISOString(),
@@ -220,21 +221,56 @@ module.exports = {
             });
         }
 
-        /*function deleteEvents(eventId) {
-
-            var params = {
-                calendarId: 'primary',
-                eventId: eventId,
+        function deleteEvents(auth){
+            const calendar = google.calendar({
+                version: 'v3',
+                auth
+            })
+            var event = {
+                'summary': 'Test Event #4',
+                //'summary': summary,
+                'location': 'Discord',
+                //'location': location,
+                'description': 'A semi-hard coded event to test functionality',
+                'start': {
+                    'dateTime': '2020-04-28T09:00:00-07:00',
+                    'timeZone': 'America/Los_Angeles',
+                },
+                'end': {
+                    'dateTime': '2020-04-28T09:00:00-07:00',
+                    'timeZone': 'America/Los_Angeles',
+                },
+                'recurrence': [
+                    //'RRULE:FREQ=DAILY;COUNT=2'
+                ],
+                'attendees': [
+                    //{'email': 'lpage@example.com'},
+                    //{'email': 'sbrin@example.com'},
+                ],
+                'reminders': {
+                    /*'useDefault': false,
+                    'overrides': [
+                        {'method': 'email', 'minutes': 24 * 60},
+                        {'method': 'popup', 'minutes': 10},
+                    ],*/
+                },
             };
 
-            calendar.events.delete(params, function(err) {
+            calendar.events.delete({
+                auth: auth,
+                calendarId: calID.ID,
+                eventId: '2ec478p2i3m5h811e7u5d372bc'
+            }, function (err, event) {
                 if (err) {
-                    console.log('The API returned an error: ' + err);
+                    message.reply('There was an error contacting the Calendar service: ' + err)
+                    //console.log('There was an error contacting the Calendar service: ' + err);
                     return;
                 }
-                console.log('Event deleted.');
+                message.reply('Event deleted!')
+                listEvents(auth)
+                //console.log('Event created: %s', event.htmlLink);
             });
-        }*/
+        }
 
         // Refer to the Node.js quickstart on how to setup the environment:
         // https://developers.google.com/calendar/quickstart/node
@@ -287,12 +323,13 @@ module.exports = {
                     //console.log('There was an error contacting the Calendar service: ' + err);
                     return;
                 }
+                //message.reply('EventId is '+ event.eventId)
                 message.reply('Event created!')
                 listEvents(auth)
                 //console.log('Event created: %s', event.htmlLink);
             });
         }
-    },
+    }
 
     // dispAuth: () => {
     //     const embed = new MessageEmbed()
