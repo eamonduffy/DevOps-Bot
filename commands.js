@@ -96,7 +96,13 @@ module.exports = {
     },
 
     gc: (client, message) => {
-        const cal = message.content.substr('dev-cal'.length).toLowerCase().trim()
+        let cal = message.content.substr('dev-cal'.length).toLowerCase().trim()
+        if(cal.indexOf('-')>-1){
+           eventID = cal.slice(cal.indexOf('-')+1, cal.indexOf('@')).trim()
+            cal = cal.slice(0,6)
+            console.log(cal)
+            console.log(eventID)
+        }
         const fs = require('fs');
         const readline = require('readline');
         const {
@@ -196,7 +202,6 @@ module.exports = {
                 version: 'v3',
                 auth
             });
-            //calendar.events.list(calID.ID).items[0].id
             calendar.events.list({
                 calendarId: calID.ID,
                 timeMin: (new Date()).toISOString(),
@@ -212,7 +217,7 @@ module.exports = {
                     events.map((event, i) => {
                         const start = event.start.dateTime || event.start.date;
                         //console.log(`${start} - ${event.summary}`);
-                        message.reply(`${start} - ${event.summary}`);
+                        message.reply(`${start} - ${event.summary}-${event.iCalUID}`);
                     });
                 } else {
                     message.reply('No upcoming events found')
@@ -226,40 +231,11 @@ module.exports = {
                 version: 'v3',
                 auth
             })
-            var event = {
-                'summary': 'Test Event #4',
-                //'summary': summary,
-                'location': 'Discord',
-                //'location': location,
-                'description': 'A semi-hard coded event to test functionality',
-                'start': {
-                    'dateTime': '2020-04-28T09:00:00-07:00',
-                    'timeZone': 'America/Los_Angeles',
-                },
-                'end': {
-                    'dateTime': '2020-04-28T09:00:00-07:00',
-                    'timeZone': 'America/Los_Angeles',
-                },
-                'recurrence': [
-                    //'RRULE:FREQ=DAILY;COUNT=2'
-                ],
-                'attendees': [
-                    //{'email': 'lpage@example.com'},
-                    //{'email': 'sbrin@example.com'},
-                ],
-                'reminders': {
-                    /*'useDefault': false,
-                    'overrides': [
-                        {'method': 'email', 'minutes': 24 * 60},
-                        {'method': 'popup', 'minutes': 10},
-                    ],*/
-                },
-            };
 
             calendar.events.delete({
                 auth: auth,
                 calendarId: calID.ID,
-                eventId: '2ec478p2i3m5h811e7u5d372bc'
+                eventId: eventID,
             }, function (err, event) {
                 if (err) {
                     message.reply('There was an error contacting the Calendar service: ' + err)
@@ -285,9 +261,9 @@ module.exports = {
             //const location = message.content.substr('dev-cal'.length).toLowerCase().trim()
 
             var event = {
-                'summary': 'Test Event #4',
+                'summary': eventName,
                 //'summary': summary,
-                'location': 'Discord',
+                'location': eventLocation,
                 //'location': location,
                 'description': 'A semi-hard coded event to test functionality',
                 'start': {
@@ -323,7 +299,6 @@ module.exports = {
                     //console.log('There was an error contacting the Calendar service: ' + err);
                     return;
                 }
-                //message.reply('EventId is '+ event.eventId)
                 message.reply('Event created!')
                 listEvents(auth)
                 //console.log('Event created: %s', event.htmlLink);
