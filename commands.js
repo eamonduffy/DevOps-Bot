@@ -79,23 +79,23 @@ module.exports = {
     codeTest: (client,message) => {
         const codeTest = message.content.substr('dev-test'.length).toLowerCase().trim()
         if (codeTest.localeCompare('mocha')==0){
-            message.reply('Insert mocha text here')
+            message.reply('Mocha is a JavaScript test framework which runs on Node.js, and hosted on GitHub. Learn more here: https://mochajs.org/#getting-started')
             return
         }
         if (codeTest.localeCompare('jasmine')==0){
-            message.reply('insert jasmine text here')
+            message.reply('Jasmine is a development framework used for testing JavaScript. Unlike some of the other frameworks, it does not depend on any other frameworks to work. Learn more here: https://jasmine.github.io/')
             return
         }
         if (codeTest.localeCompare('karma')==0){
-            message.reply('insert karma text here')
+            message.reply('Karma is a testing tool which creates a web server to execute source code against the specified test code. Learn more here: https://karma-runner.github.io/4.0/intro/how-it-works.html')
             return
         }
         if (codeTest.localeCompare('puppeteer')==0){
-            message.reply('insert puppeteer text here')
+            message.reply('Puppeteer is a, "Node library which provides a high-level API to control headless Chrome or Chromium over the DevTools Protocol. It can also be configured to use full (non-headless) Chrome or Chromium." Learn more here: https://developers.google.com/web/tools/puppeteer')
             return
         }
         if(codeTest.localeCompare('chai')==0){
-            message.reply('insert chai text here')
+            message.reply('Chai is a BDD/TDD library for used with node.js. Learn more here: https://www.chaijs.com/guide/')
             return
         }
         
