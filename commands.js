@@ -97,11 +97,18 @@ module.exports = {
 
     gc: (client, message) => {
         let cal = message.content.substr('dev-cal'.length).toLowerCase().trim()
-        if(cal.indexOf('-')>-1){
-           eventID = cal.slice(cal.indexOf('-')+1, cal.indexOf('@')).trim()
+        let calCopy = message.content.substr('dev-cal'.length)
+        if(cal.indexOf('!')>-1){
+           eventID = cal.slice(cal.indexOf('!')+1, cal.indexOf('@')).trim()
             cal = cal.slice(0,6)
             console.log(cal)
             console.log(eventID)
+        }
+        if(cal.indexOf('+')>-1){
+            eventName = calCopy.slice(calCopy.indexOf('+')+1, calCopy.indexOf('@')).trim()
+            eventLocation = calCopy.slice(cal.indexOf('@')+1, calCopy.indexOf('<')).trim()
+
+            cal = cal.slice(0,6)
         }
         const fs = require('fs');
         const readline = require('readline');
@@ -265,7 +272,7 @@ module.exports = {
                 //'summary': summary,
                 'location': eventLocation,
                 //'location': location,
-                'description': 'A semi-hard coded event to test functionality',
+                'description': 'Non hard-coded description option currently unavailable',
                 'start': {
                     'dateTime': '2020-04-28T09:00:00-07:00',
                     'timeZone': 'America/Los_Angeles',
