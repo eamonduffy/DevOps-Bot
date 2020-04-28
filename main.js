@@ -22,8 +22,10 @@ const {
   getJoke,
   getHelp,
   codeTest,
-  dispAuth
+  dispAuth,
+  picture
 } = require('./commands')
+
 
 /// Embeds ///
 const megEmbed = new MessageEmbed()
@@ -68,6 +70,7 @@ client.on('message', msg => {
   let joke = 'joke';
   let creators = 'creators';
   let test= 'test';
+  let pic = 'pic';
 
   switch (args[0]) {
     case ping:
@@ -99,7 +102,11 @@ client.on('message', msg => {
       msg.channel.send(gioEmbed);
       msg.channel.send(josEmbed);
       break;
+	case pic:
+	  picture(client, msg);
+	  break;
   }
+
 });
 
 client.login(auth.token);
