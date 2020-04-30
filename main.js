@@ -21,7 +21,8 @@ const {
   getQuote,
   getJoke,
   getHelp,
-  dispAuth
+  dispAuth,
+  codeTest
 } = require('./commands')
 
 /// Embeds ///
@@ -66,6 +67,7 @@ client.on('message', msg => {
   let cal = 'cal';
   let joke = 'joke';
   let creators = 'creators';
+  let test='test';
 
   switch (args[0]) {
     case ping:
@@ -85,6 +87,9 @@ client.on('message', msg => {
       break;
     case joke:
       msg.reply(getJoke());
+      break;
+    case test:
+      codeTest(client,msg);
       break;
     case creators:
       msg.reply('Creators of the DevOps Bot:')
