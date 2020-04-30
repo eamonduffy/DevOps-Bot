@@ -59,6 +59,11 @@ module.exports = {
             return;
         }
 
+        if (tech.localeCompare('infrastructure as code') == 0) {
+            message.reply('DevOps technologies used in infrastructure as code include Terraform, Saltstack, Docker, and (R)?ex among others.')
+            return;
+        }
+
         message.reply('Please enter a valid command and try again :)')
 
     },
@@ -75,61 +80,6 @@ module.exports = {
         var item = quotes[Math.floor(Math.random() * quotes.length)];
         return item;
     },
-    getHelp: () => {
-
-        return '"dev-dt continuous integration" - List of technologies used in continuous integration. \n"dev-dt continuous testing" - List of technologies used in continuous testing. \n"dev-dt source control practices" - List of technologies used in source control. \n"dev-dt continuous monitoring" - List of technologies used in continuous monitoring. \n"dev-dt continuous exploration" - List of technologies used in continuous exploration. \n"dev-dt chatops" - List of technologies used in chatops. \n"dev-dt package management" - List of technologies used in package management. \n"dev-dt devsecops" - List of technologies used in devsecops.\n"dev-dev quote" - displays informative DevOps quotes.\n"dev-cal list" - displays a list of the 10 next calender events.\n"dev-cal create" - creates an event.\n"dev-cal delete" - deletes an event.\n"dev-joke" - displays a random DevOps joke.\n "dev-pic continuous integration" - displays an informative picture about continuous integration.\n "dev-pic chatops" - displays an informative picture about chatops. \n"dev-pic source control practices" - displays an informative picture about source control practices. \n "dev-pic devsecops" - displays an informative picture about devsecops. \n "dev-pic continuous testing" - displays an informative picture about continuous testing.';
-    },
-    picture: (client, message) => {
-        const picture = message.content.substr('dev-pic'.length).toLowerCase().trim()
-        if (picture.localeCompare('continuous integration') == 0) {
-            message.reply({files: ["./images/Continuous_Integration.png"]})
-            return
-        }
-
-        if (picture.localeCompare('continuous testing') == 0) {
-            message.reply({files: ["./images/continuous_testing.gif"]})
-            return
-        }
-
-        if (picture.localeCompare('source control practices') == 0) {
-            message.reply({files: ["./images/source_control_practices.png"]})
-            return
-        }
-		if (picture.localeCompare('chatops') == 0) {
-            message.reply({files: ["./images/chatops.jpg"]})
-            return
-        }
-		if (picture.localeCompare('devsecops') == 0) {
-            message.reply({files: ["./images/devsecops.png"]})
-            return
-        }
-	},
-
-    codeTest: (client,message) => {
-        const codeTest = message.content.substr('dev-test'.length).toLowerCase().trim()
-        if (codeTest.localeCompare('mocha')==0){
-            message.reply('Mocha is a JavaScript test framework which runs on Node.js, and hosted on GitHub. Learn more here: https://mochajs.org/#getting-started')
-            return
-        }
-        if (codeTest.localeCompare('jasmine')==0){
-            message.reply('Jasmine is a development framework used for testing JavaScript. Unlike some of the other frameworks, it does not depend on any other frameworks to work. Learn more here: https://jasmine.github.io/')
-            return
-        }
-        if (codeTest.localeCompare('karma')==0){
-            message.reply('Karma is a testing tool which creates a web server to execute source code against the specified test code. Learn more here: https://karma-runner.github.io/4.0/intro/how-it-works.html')
-            return
-        }
-        if (codeTest.localeCompare('puppeteer')==0){
-            message.reply('Puppeteer is a, "Node library which provides a high-level API to control headless Chrome or Chromium over the DevTools Protocol. It can also be configured to use full (non-headless) Chrome or Chromium." Learn more here: https://developers.google.com/web/tools/puppeteer')
-            return
-        }
-        if(codeTest.localeCompare('chai')==0){
-            message.reply('Chai is a BDD/TDD library for used with node.js. Learn more here: https://www.chaijs.com/guide/')
-            return
-        }
-        
-        message.reply('Some testing frameworks for JavaScript are Mocha, Jasmine, Karma, Puppeteer, and Chai. Type "dev test (test framework)" to learn more about a specific framework listed above.')
-    }, 
     getJoke: () => {
         const jokes = ["Two robots meet. The first robot asks, 'Are you ill?' The second robot replies, 'No, just feeling a bit off.'",
             "ASCII a stupid question, get a stupid ANSI",
@@ -143,20 +93,25 @@ module.exports = {
         var joke = jokes[Math.floor(Math.random() * jokes.length)];
         return joke;
     },
+    getHelp: () => {
+
+        return '"dt continuous integration" - List of technologies used in continuous integration. \n"dt continuous testing" - List of technologies used in continuous testing. \n"dt source control practices" - List of technologies used in source control. \n"dt continuous monitoring" - List of technologies used in continuous monitoring. \n"dt continuous exploration" - List of technologies used in continuous exploration. \n"dt chatops" - List of technologies used in chatops. \n"dt package management" - List of technologies used in package management. \n"dt devsecops" - List of technologies used in devsecops.\n"dev quote" - displays informative DevOps quotes ';
+    },
+
     gc: (client, message) => {
         let cal = message.content.substr('dev-cal'.length).toLowerCase().trim()
         let calCopy = message.content.substr('dev-cal'.length)
-        if(cal.indexOf('!')>-1){
-           eventID = cal.slice(cal.indexOf('!')+1, cal.indexOf('@')).trim()
-            cal = cal.slice(0,6)
+        if (cal.indexOf('!') > -1) {
+            eventID = cal.slice(cal.indexOf('!') + 1, cal.indexOf('@')).trim()
+            cal = cal.slice(0, 6)
             console.log(cal)
             console.log(eventID)
         }
-        if(cal.indexOf('+')>-1){
-            eventName = calCopy.slice(calCopy.indexOf('+')+1, calCopy.indexOf('@')).trim()
-            eventLocation = calCopy.slice(cal.indexOf('@')+1, calCopy.indexOf('<')).trim()
+        if (cal.indexOf('+') > -1) {
+            eventName = calCopy.slice(calCopy.indexOf('+') + 1, calCopy.indexOf('@')).trim()
+            eventLocation = calCopy.slice(cal.indexOf('@') + 1, calCopy.indexOf('<')).trim()
 
-            cal = cal.slice(0,6)
+            cal = cal.slice(0, 6)
         }
         const fs = require('fs');
         const readline = require('readline');
@@ -215,7 +170,6 @@ module.exports = {
                 oAuth2Client.setCredentials(JSON.parse(token));
                 callback(oAuth2Client);
             });
-    
         }
 
         /**
@@ -282,7 +236,7 @@ module.exports = {
             });
         }
 
-        function deleteEvents(auth){
+        function deleteEvents(auth) {
             const calendar = google.calendar({
                 version: 'v3',
                 auth
@@ -368,5 +322,4 @@ module.exports = {
     //         .setDescription('Author 1');
     //     message.channel.send(embed);
     // }
-
 }

@@ -21,11 +21,8 @@ const {
   getQuote,
   getJoke,
   getHelp,
-  codeTest,
-  dispAuth,
-  picture
+  dispAuth
 } = require('./commands')
-
 
 /// Embeds ///
 const megEmbed = new MessageEmbed()
@@ -69,8 +66,6 @@ client.on('message', msg => {
   let cal = 'cal';
   let joke = 'joke';
   let creators = 'creators';
-  let test= 'test';
-  let pic = 'pic';
 
   switch (args[0]) {
     case ping:
@@ -91,9 +86,6 @@ client.on('message', msg => {
     case joke:
       msg.reply(getJoke());
       break;
-    case test:
-      codeTest(client,msg);
-      break;
     case creators:
       msg.reply('Creators of the DevOps Bot:')
       msg.channel.send(megEmbed);
@@ -102,11 +94,7 @@ client.on('message', msg => {
       msg.channel.send(gioEmbed);
       msg.channel.send(josEmbed);
       break;
-	case pic:
-	  picture(client, msg);
-	  break;
   }
-
 });
 
 client.login(auth.token);
