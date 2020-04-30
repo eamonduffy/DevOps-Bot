@@ -95,8 +95,36 @@ module.exports = {
     },
     getHelp: () => {
 
-        return '"dt continuous integration" - List of technologies used in continuous integration. \n"dt continuous testing" - List of technologies used in continuous testing. \n"dt source control practices" - List of technologies used in source control. \n"dt continuous monitoring" - List of technologies used in continuous monitoring. \n"dt continuous exploration" - List of technologies used in continuous exploration. \n"dt chatops" - List of technologies used in chatops. \n"dt package management" - List of technologies used in package management. \n"dt devsecops" - List of technologies used in devsecops.\n"dev quote" - displays informative DevOps quotes ';
+        return '"dev-dt continuous integration" - List of technologies used in continuous integration. \n"dev-dt continuous testing" - List of technologies used in continuous testing. \n"dev-dt source control practices" - List of technologies used in source control. \n"dev-dt continuous monitoring" - List of technologies used in continuous monitoring. \n"dev-dt continuous exploration" - List of technologies used in continuous exploration. \n"dev-dt chatops" - List of technologies used in chatops. \n"dev-dt package management" - List of technologies used in package management. \n"dev-dt devsecops" - List of technologies used in devsecops.\n"dev-dev quote" - displays informative DevOps quotes.\n"dev-cal list" - displays a list of the 10 next calender events.\n"dev-cal create" - creates an event.\n"dev-cal delete" - deletes an event.\n"dev-joke" - displays a random DevOps joke.\n "dev-pic continuous integration" - displays an informative picture about continuous integration.\n "dev-pic chatops" - displays an informative picture about chatops. \n"dev-pic source control practices" - displays an informative picture about source control practices. \n "dev-pic devsecops" - displays an informative picture about devsecops. \n "dev-pic continuous testing" - displays an informative picture about continuous testing.';
     },
+	
+ //then add this command in command.js, im gonna send you an image file as well just put that file in the same directory as the command.js and main.js files if you 
+
+    picture: (client, message) => {
+        const picture = message.content.substr('dev-pic'.length).toLowerCase().trim()
+        if (picture.localeCompare('continuous integration') == 0) {
+            message.reply({files: ["./images/Continuous_Integration.png"]})
+            return
+        }
+
+        if (picture.localeCompare('continuous testing') == 0) {
+            message.reply({files: ["./images/continuous_testing.gif"]})
+            return
+        }
+
+        if (picture.localeCompare('source control practices') == 0) {
+            message.reply({files: ["./images/source_control_practices.png"]})
+            return
+        }
+		if (picture.localeCompare('chatops') == 0) {
+            message.reply({files: ["./images/chatops.jpg"]})
+            return
+        }
+		if (picture.localeCompare('devsecops') == 0) {
+            message.reply({files: ["./images/devsecops.png"]})
+            return
+        }
+	},
 
     gc: (client, message) => {
         let cal = message.content.substr('dev-cal'.length).toLowerCase().trim()

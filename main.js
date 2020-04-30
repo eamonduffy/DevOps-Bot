@@ -22,7 +22,8 @@ const {
   getJoke,
   getHelp,
   dispAuth,
-  codeTest
+  codeTest,
+  picture
 } = require('./commands')
 
 /// Embeds ///
@@ -68,6 +69,7 @@ client.on('message', msg => {
   let joke = 'joke';
   let creators = 'creators';
   let test='test';
+  let pic = 'pic';
 
   switch (args[0]) {
     case ping:
@@ -76,6 +78,9 @@ client.on('message', msg => {
     case help:
       msg.reply(getHelp());
       break;
+	case pic:
+	  picture(client, msg);
+	  break;
     case quote:
       msg.reply(getQuote());
       break;
