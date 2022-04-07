@@ -12,7 +12,7 @@
     "libsodium-wrappers": "^0.7.6",
     "nodemon": "^2.0.3",
     "utf-8-validate": "^5.0.2",
-    "winston": "^3.2.1"
+    "winston": "^3.3.0"
   },
   "devDependencies": {},
   "scripts": {
