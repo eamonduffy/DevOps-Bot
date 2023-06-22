@@ -8,9 +8,9 @@
     "discord.io": "^2.5.3",
     "discord.js": "^12.1.1",
     "ffmpeg-static": "^2.4.0",
-    "googleapis": "^39.2.0",
+    "googleapis": "^40.0.0",
     "libsodium-wrappers": "^0.7.6",
-    "nodemon": "^2.0.3",
+    "nodemon": "^2.0.17",
     "utf-8-validate": "^5.0.2",
     "winston": "^3.2.1"
   },
